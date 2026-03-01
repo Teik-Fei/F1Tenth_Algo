@@ -31,12 +31,11 @@ Open your browser and navigate to http://localhost:8080/vnc.html. Click Connect 
 In a new terminal on your host machine, enter the simulator container:
 
 ```bash
-docker exec -it f1tenth_gym_ros-sim-1 /bin/bash
+docker compose exec sim /bin/bash
 # Inside the container:
 source /sim_ws/install/setup.bash
 ros2 launch f1tenth_gym_ros gym_bridge_launch.py
 ```
-> If you get `No such container`, run `docker ps` to find the exact container name and replace `f1tenth_gym_ros-sim-1` with it.
 
 ---
 
@@ -45,7 +44,7 @@ ros2 launch f1tenth_gym_ros gym_bridge_launch.py
 With the simulator running and visible in your browser, open a second terminal on your host machine to run the algo:
 
 ```bash
-docker exec -it f1tenth_gym_ros-sim-1 /bin/bash
+docker compose exec sim /bin/bash
 # Inside the container:
 source /sim_ws/install/setup.bash
 ros2 run f1tenth_gym_ros gap_finder_algo
