@@ -1,4 +1,0 @@
-[console_scripts]
-gap_finder = f1tenth_gym_ros.gap_finder:main
-gym_bridge = f1tenth_gym_ros.gym_bridge:main
-
