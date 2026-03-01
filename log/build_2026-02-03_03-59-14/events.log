@@ -1,0 +1,56 @@
+[0.000000] (-) TimerEvent: {}
+[0.000910] (f1tenth_gym_ros) JobQueued: {'identifier': 'f1tenth_gym_ros', 'dependencies': OrderedDict()}
+[0.000978] (f1tenth_gym_ros) JobStarted: {'identifier': 'f1tenth_gym_ros'}
+[0.099726] (-) TimerEvent: {}
+[0.199969] (-) TimerEvent: {}
+[0.300376] (-) TimerEvent: {}
+[0.400682] (-) TimerEvent: {}
+[0.473885] (f1tenth_gym_ros) Command: {'cmd': ['/usr/bin/python3', 'setup.py', 'egg_info', '--egg-base', '../../build/f1tenth_gym_ros', 'build', '--build-base', '/sim_ws/build/f1tenth_gym_ros/build', 'install', '--record', '/sim_ws/build/f1tenth_gym_ros/install.log', '--single-version-externally-managed'], 'cwd': '/sim_ws/src/f1tenth_gym_ros', 'env': {'SHLVL': '0', 'LD_LIBRARY_PATH': '/opt/ros/foxy/opt/yaml_cpp_vendor/lib:/opt/ros/foxy/opt/rviz_ogre_vendor/lib:/opt/ros/foxy/lib/x86_64-linux-gnu:/opt/ros/foxy/lib', 'HOME': '/root', 'OLDPWD': '/', 'ROS_PYTHON_VERSION': '3', 'ROS_DISTRO': 'foxy', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'ROS_LOCALHOST_ONLY': '0', 'PATH': '/opt/ros/foxy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin', 'LANG': 'C.UTF-8', 'AMENT_PREFIX_PATH': '/opt/ros/foxy', 'PWD': '/sim_ws/build/f1tenth_gym_ros', 'LC_ALL': 'C.UTF-8', 'PYTHONPATH': '/sim_ws/build/f1tenth_gym_ros/prefix_override:/sim_ws/install/f1tenth_gym_ros/lib/python3.8/site-packages:/opt/ros/foxy/lib/python3.8/site-packages', 'COLCON': '1'}, 'shell': False}
+[0.500843] (-) TimerEvent: {}
+[0.601144] (-) TimerEvent: {}
+[0.616433] (f1tenth_gym_ros) StdoutLine: {'line': b'running egg_info\n'}
+[0.617107] (f1tenth_gym_ros) StdoutLine: {'line': b'creating ../../build/f1tenth_gym_ros/f1tenth_gym_ros.egg-info\n'}
+[0.617951] (f1tenth_gym_ros) StdoutLine: {'line': b'writing ../../build/f1tenth_gym_ros/f1tenth_gym_ros.egg-info/PKG-INFO\n'}
+[0.618387] (f1tenth_gym_ros) StdoutLine: {'line': b'writing dependency_links to ../../build/f1tenth_gym_ros/f1tenth_gym_ros.egg-info/dependency_links.txt\n'}
+[0.618779] (f1tenth_gym_ros) StdoutLine: {'line': b'writing entry points to ../../build/f1tenth_gym_ros/f1tenth_gym_ros.egg-info/entry_points.txt\n'}
+[0.618955] (f1tenth_gym_ros) StdoutLine: {'line': b'writing requirements to ../../build/f1tenth_gym_ros/f1tenth_gym_ros.egg-info/requires.txt\n'}
+[0.619213] (f1tenth_gym_ros) StdoutLine: {'line': b'writing top-level names to ../../build/f1tenth_gym_ros/f1tenth_gym_ros.egg-info/top_level.txt\n'}
+[0.620663] (f1tenth_gym_ros) StdoutLine: {'line': b"writing manifest file '../../build/f1tenth_gym_ros/f1tenth_gym_ros.egg-info/SOURCES.txt'\n"}
+[0.651825] (f1tenth_gym_ros) StdoutLine: {'line': b"reading manifest file '../../build/f1tenth_gym_ros/f1tenth_gym_ros.egg-info/SOURCES.txt'\n"}
+[0.653322] (f1tenth_gym_ros) StdoutLine: {'line': b"writing manifest file '../../build/f1tenth_gym_ros/f1tenth_gym_ros.egg-info/SOURCES.txt'\n"}
+[0.653489] (f1tenth_gym_ros) StdoutLine: {'line': b'running build\n'}
+[0.653634] (f1tenth_gym_ros) StdoutLine: {'line': b'running build_py\n'}
+[0.653765] (f1tenth_gym_ros) StdoutLine: {'line': b'creating /sim_ws/build/f1tenth_gym_ros/build\n'}
+[0.654010] (f1tenth_gym_ros) StdoutLine: {'line': b'creating /sim_ws/build/f1tenth_gym_ros/build/lib\n'}
+[0.654319] (f1tenth_gym_ros) StdoutLine: {'line': b'creating /sim_ws/build/f1tenth_gym_ros/build/lib/f1tenth_gym_ros\n'}
+[0.654477] (f1tenth_gym_ros) StdoutLine: {'line': b'copying f1tenth_gym_ros/gym_bridge.py -> /sim_ws/build/f1tenth_gym_ros/build/lib/f1tenth_gym_ros\n'}
+[0.654820] (f1tenth_gym_ros) StdoutLine: {'line': b'copying f1tenth_gym_ros/__init__.py -> /sim_ws/build/f1tenth_gym_ros/build/lib/f1tenth_gym_ros\n'}
+[0.654882] (f1tenth_gym_ros) StdoutLine: {'line': b'running install\n'}
+[0.655437] (f1tenth_gym_ros) StdoutLine: {'line': b'running install_lib\n'}
+[0.656490] (f1tenth_gym_ros) StdoutLine: {'line': b'creating /sim_ws/install/f1tenth_gym_ros/lib/python3.8/site-packages/f1tenth_gym_ros\n'}
+[0.656825] (f1tenth_gym_ros) StdoutLine: {'line': b'copying /sim_ws/build/f1tenth_gym_ros/build/lib/f1tenth_gym_ros/gym_bridge.py -> /sim_ws/install/f1tenth_gym_ros/lib/python3.8/site-packages/f1tenth_gym_ros\n'}
+[0.657243] (f1tenth_gym_ros) StdoutLine: {'line': b'copying /sim_ws/build/f1tenth_gym_ros/build/lib/f1tenth_gym_ros/__init__.py -> /sim_ws/install/f1tenth_gym_ros/lib/python3.8/site-packages/f1tenth_gym_ros\n'}
+[0.657635] (f1tenth_gym_ros) StdoutLine: {'line': b'byte-compiling /sim_ws/install/f1tenth_gym_ros/lib/python3.8/site-packages/f1tenth_gym_ros/gym_bridge.py to gym_bridge.cpython-38.pyc\n'}
+[0.661425] (f1tenth_gym_ros) StdoutLine: {'line': b'byte-compiling /sim_ws/install/f1tenth_gym_ros/lib/python3.8/site-packages/f1tenth_gym_ros/__init__.py to __init__.cpython-38.pyc\n'}
+[0.661758] (f1tenth_gym_ros) StdoutLine: {'line': b'running install_data\n'}
+[0.662069] (f1tenth_gym_ros) StdoutLine: {'line': b'creating /sim_ws/install/f1tenth_gym_ros/share/ament_index\n'}
+[0.662363] (f1tenth_gym_ros) StdoutLine: {'line': b'creating /sim_ws/install/f1tenth_gym_ros/share/ament_index/resource_index\n'}
+[0.662706] (f1tenth_gym_ros) StdoutLine: {'line': b'creating /sim_ws/install/f1tenth_gym_ros/share/ament_index/resource_index/packages\n'}
+[0.662994] (f1tenth_gym_ros) StdoutLine: {'line': b'copying resource/f1tenth_gym_ros -> /sim_ws/install/f1tenth_gym_ros/share/ament_index/resource_index/packages\n'}
+[0.663224] (f1tenth_gym_ros) StdoutLine: {'line': b'copying package.xml -> /sim_ws/install/f1tenth_gym_ros/share/f1tenth_gym_ros\n'}
+[0.663286] (f1tenth_gym_ros) StdoutLine: {'line': b'creating /sim_ws/install/f1tenth_gym_ros/share/f1tenth_gym_ros/launch\n'}
+[0.663680] (f1tenth_gym_ros) StdoutLine: {'line': b'copying launch/gym_bridge_launch.py -> /sim_ws/install/f1tenth_gym_ros/share/f1tenth_gym_ros/launch\n'}
+[0.664075] (f1tenth_gym_ros) StdoutLine: {'line': b'copying launch/opp_racecar.xacro -> /sim_ws/install/f1tenth_gym_ros/share/f1tenth_gym_ros/launch\n'}
+[0.664162] (f1tenth_gym_ros) StdoutLine: {'line': b'copying launch/ego_racecar.xacro -> /sim_ws/install/f1tenth_gym_ros/share/f1tenth_gym_ros/launch\n'}
+[0.664332] (f1tenth_gym_ros) StdoutLine: {'line': b'copying launch/gym_bridge.rviz -> /sim_ws/install/f1tenth_gym_ros/share/f1tenth_gym_ros/launch\n'}
+[0.664600] (f1tenth_gym_ros) StdoutLine: {'line': b'creating /sim_ws/install/f1tenth_gym_ros/share/f1tenth_gym_ros/config\n'}
+[0.664662] (f1tenth_gym_ros) StdoutLine: {'line': b'copying config/sim.yaml -> /sim_ws/install/f1tenth_gym_ros/share/f1tenth_gym_ros/config\n'}
+[0.664707] (f1tenth_gym_ros) StdoutLine: {'line': b'running install_egg_info\n'}
+[0.666164] (f1tenth_gym_ros) StdoutLine: {'line': b'Copying ../../build/f1tenth_gym_ros/f1tenth_gym_ros.egg-info to /sim_ws/install/f1tenth_gym_ros/lib/python3.8/site-packages/f1tenth_gym_ros-0.0.0-py3.8.egg-info\n'}
+[0.667260] (f1tenth_gym_ros) StdoutLine: {'line': b'running install_scripts\n'}
+[0.683638] (f1tenth_gym_ros) StdoutLine: {'line': b'Installing gym_bridge script to /sim_ws/install/f1tenth_gym_ros/lib/f1tenth_gym_ros\n'}
+[0.684224] (f1tenth_gym_ros) StdoutLine: {'line': b"writing list of installed files to '/sim_ws/build/f1tenth_gym_ros/install.log'\n"}
+[0.701399] (-) TimerEvent: {}
+[0.703697] (f1tenth_gym_ros) CommandEnded: {'returncode': 0}
+[0.718349] (f1tenth_gym_ros) JobEnded: {'identifier': 'f1tenth_gym_ros', 'rc': 0}
+[0.718659] (-) EventReactorShutdown: {}

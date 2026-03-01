@@ -1,0 +1,33 @@
+[0.829s] Invoking command in '/sim_ws/build/f1tenth_gym_ros': PYTHONPATH=/sim_ws/build/f1tenth_gym_ros/prefix_override:/sim_ws/install/f1tenth_gym_ros/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py develop --uninstall --editable --build-directory /sim_ws/build/f1tenth_gym_ros/build
+[1.143s] running develop
+[1.265s] Removing /sim_ws/install/f1tenth_gym_ros/lib/python3.8/site-packages/f1tenth-gym-ros.egg-link (link to .)
+[1.301s] Invoked command in '/sim_ws/build/f1tenth_gym_ros' returned '0': PYTHONPATH=/sim_ws/build/f1tenth_gym_ros/prefix_override:/sim_ws/install/f1tenth_gym_ros/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py develop --uninstall --editable --build-directory /sim_ws/build/f1tenth_gym_ros/build
+[1.303s] Invoking command in '/sim_ws/src/f1tenth_gym_ros': PYTHONPATH=/sim_ws/build/f1tenth_gym_ros/prefix_override:/sim_ws/install/f1tenth_gym_ros/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/f1tenth_gym_ros build --build-base /sim_ws/build/f1tenth_gym_ros/build install --record /sim_ws/build/f1tenth_gym_ros/install.log --single-version-externally-managed
+[1.585s] running egg_info
+[1.586s] writing ../../build/f1tenth_gym_ros/f1tenth_gym_ros.egg-info/PKG-INFO
+[1.586s] writing dependency_links to ../../build/f1tenth_gym_ros/f1tenth_gym_ros.egg-info/dependency_links.txt
+[1.587s] writing entry points to ../../build/f1tenth_gym_ros/f1tenth_gym_ros.egg-info/entry_points.txt
+[1.588s] writing requirements to ../../build/f1tenth_gym_ros/f1tenth_gym_ros.egg-info/requires.txt
+[1.588s] writing top-level names to ../../build/f1tenth_gym_ros/f1tenth_gym_ros.egg-info/top_level.txt
+[1.648s] reading manifest file '../../build/f1tenth_gym_ros/f1tenth_gym_ros.egg-info/SOURCES.txt'
+[1.650s] writing manifest file '../../build/f1tenth_gym_ros/f1tenth_gym_ros.egg-info/SOURCES.txt'
+[1.651s] running build
+[1.651s] running build_py
+[1.651s] copying f1tenth_gym_ros/gap_finder.py -> /sim_ws/build/f1tenth_gym_ros/build/lib/f1tenth_gym_ros
+[1.652s] running install
+[1.653s] running install_lib
+[1.654s] creating /sim_ws/install/f1tenth_gym_ros/lib/python3.8/site-packages/f1tenth_gym_ros
+[1.655s] copying /sim_ws/build/f1tenth_gym_ros/build/lib/f1tenth_gym_ros/gym_bridge.py -> /sim_ws/install/f1tenth_gym_ros/lib/python3.8/site-packages/f1tenth_gym_ros
+[1.656s] copying /sim_ws/build/f1tenth_gym_ros/build/lib/f1tenth_gym_ros/__init__.py -> /sim_ws/install/f1tenth_gym_ros/lib/python3.8/site-packages/f1tenth_gym_ros
+[1.656s] copying /sim_ws/build/f1tenth_gym_ros/build/lib/f1tenth_gym_ros/gap_finder.py -> /sim_ws/install/f1tenth_gym_ros/lib/python3.8/site-packages/f1tenth_gym_ros
+[1.657s] byte-compiling /sim_ws/install/f1tenth_gym_ros/lib/python3.8/site-packages/f1tenth_gym_ros/gym_bridge.py to gym_bridge.cpython-38.pyc
+[1.664s] byte-compiling /sim_ws/install/f1tenth_gym_ros/lib/python3.8/site-packages/f1tenth_gym_ros/__init__.py to __init__.cpython-38.pyc
+[1.665s] byte-compiling /sim_ws/install/f1tenth_gym_ros/lib/python3.8/site-packages/f1tenth_gym_ros/gap_finder.py to gap_finder.cpython-38.pyc
+[1.667s] running install_data
+[1.668s] running install_egg_info
+[1.670s] Copying ../../build/f1tenth_gym_ros/f1tenth_gym_ros.egg-info to /sim_ws/install/f1tenth_gym_ros/lib/python3.8/site-packages/f1tenth_gym_ros-0.0.0-py3.8.egg-info
+[1.672s] running install_scripts
+[1.700s] Installing gap_finder script to /sim_ws/install/f1tenth_gym_ros/lib/f1tenth_gym_ros
+[1.700s] Installing gym_bridge script to /sim_ws/install/f1tenth_gym_ros/lib/f1tenth_gym_ros
+[1.701s] writing list of installed files to '/sim_ws/build/f1tenth_gym_ros/install.log'
+[1.736s] Invoked command in '/sim_ws/src/f1tenth_gym_ros' returned '0': PYTHONPATH=/sim_ws/build/f1tenth_gym_ros/prefix_override:/sim_ws/install/f1tenth_gym_ros/lib/python3.8/site-packages:${PYTHONPATH} /usr/bin/python3 setup.py egg_info --egg-base ../../build/f1tenth_gym_ros build --build-base /sim_ws/build/f1tenth_gym_ros/build install --record /sim_ws/build/f1tenth_gym_ros/install.log --single-version-externally-managed
