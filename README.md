@@ -60,15 +60,14 @@ ros2 run f1tenth_gym_ros gap_finder_algo
 
 **Max Gap Identification:** The algorithm scans the remaining processed points to find the largest contiguous set of non-zero values.
 
-**Target Steering:** The car computes a range²-weighted mean angle across all beams in the best gap, steering toward the deepest open region rather 
-than the geometric centre.
+**Target Steering:** The car computes a range²-weighted mean angle across all beams in the best gap, steering toward the deepest open region rather than the geometric centre.
 
 **Dynamic Velocity:**
 
 - Straightaways: Speed is increased when the steering angle is small and the forward clearance is high.
-- Corners: Speed is dynamically reduced based on the sharpness of the required steering angle to maintain stability.     
+- Corners: Speed is dynamically reduced based on the sharpness of the required steering angle to maintain stability.
 
-**Three-Factor Adaptive Speed:**  
+**Three-Factor Adaptive Speed:**
 
 | Factor | Description |
 |---|---|
@@ -80,9 +79,9 @@ The **side proximity brake** is a novel addition that prevents wall-scraping whe
 
 ---
 
-## Algorithm development and thought processes
+## Algorithm Development and Thought Processes
 
-The implemented algorithm is based on the Follow-the-Gap method which we took inspiration from existing F1TENTH gap finder algorithm.
+The implemented algorithm is based on the **Follow-the-Gap Method**, which we took inspiration from the existing gap finder algorithm from F1TENTH.
 
 ### What Was Adopted
 - **Safety bubble** around near obstacles to zero out dangerous beams
@@ -95,7 +94,9 @@ The implemented algorithm is based on the Follow-the-Gap method which we took in
 The basic safety bubble used a **fixed beam count** regardless of how close the obstacle was. We observed that at high speeds, the car's body would still clip walls because the bubble wasn't wide enough for nearby obstacles.
 
 **Fix:** We switched to a **distance-adaptive bubble** using geometry:
-$$\text{half\_angle} = \arctan\left(\frac{R_\text{safety}}{d}\right)$$
+
+$$half\_angle = \arctan\left(\frac{R_{safety}}{d}\right)$$
+
 Closer obstacles now receive proportionally wider bubbles, providing stronger protection near the car.
 
 ---
@@ -104,11 +105,15 @@ Closer obstacles now receive proportionally wider bubbles, providing stronger pr
 The reference algorithm selects the **single global maximum range beam** as the goal point. During testing, when two gaps of similar depth existed on opposite sides, the car would rapidly switch between them, causing dangerous oscillation.
 
 **Fix 1 — Gap Scoring:** Instead of argmax, we score every valid gap:
-$$\text{score} = \text{depth} \times \text{width} \times e^{\;\text{TURN\_PERSIST} \;\times\; \text{sign}(\psi_\text{prev}) \;\times\; \theta_\text{gap}}$$
+
+$$score = depth \times width \times e^{TURN\_PERSIST \times sign(\psi_{prev}) \times \theta_{gap}}$$
+
 The **turn persistence** term biases the score toward gaps aligned with the current steering direction, so the car commits to a turn rather than second-guessing itself mid-corner.
 
 **Fix 2 — Weighted Heading:** Instead of steering to the geometric midpoint of a gap, we compute a **range²-weighted mean angle**:
-$$\theta_\text{target} = \frac{\sum r_i^2 \cdot \theta_i}{\sum r_i^2}$$
+
+$$\theta_{target} = \frac{\sum r_i^2 \cdot \theta_i}{\sum r_i^2}$$
+
 This steers toward the **deepest, most open region** of the gap rather than its centre, which we found produced smoother and safer cornering.
 
 ---
@@ -117,9 +122,11 @@ This steers toward the **deepest, most open region** of the gap rather than its 
 At high speed, even when the forward path was clear, the car would drift into the outer wall during sharp turns because the speed controller only considered **forward clearance and steering angle**.
 
 **Fix:** We added a **third speed factor** — a side proximity brake:
+
 ```
 speed = min(speed_clear, speed_steer, speed_side)
 ```
+
 | Factor | Description |
 |---|---|
 | `speed_clear` | Quadratic brake as forward wall approaches |
@@ -134,7 +141,9 @@ The side brake (`SIDE_BRAKE_DIST = 0.8m`, `SIDE_BRAKE_SPEED = 4.0`) was tuned by
 Raw LiDAR scans contain frame-to-frame noise, causing rapid small changes in the detected gap that translated directly into jittery steering.
 
 **Fix:** A first-order exponential smoother on the steering output:
-$$\psi_t = \alpha \cdot \psi_{t-1} + (1 - \alpha) \cdot \psi_\text{raw}$$
+
+$$\psi_t = \alpha \cdot \psi_{t-1} + (1 - \alpha) \cdot \psi_{raw}$$
+
 `STEER_SMOOTH = 0.25` was chosen as the gain — lower values were too sluggish to respond to the corners, higher values didn't reduce the jitter enough.
 
 ---
@@ -149,4 +158,4 @@ $$\psi_t = \alpha \cdot \psi_{t-1} + (1 - \alpha) \cdot \psi_\text{raw}$$
 | `CORNER_EXP` | 3.0 | Sharp speed drop at corner entry, quick recovery on exit |
 | `SIDE_BRAKE_DIST` | 0.8m | Tuned to catch wall proximity before it becomes a crash |
 | `STEER_SMOOTH` | 0.25 | Balances noise rejection vs. steering responsiveness |
-| `SPEED_MAX` | 55.0 | Maximum stable speed observed on long straights in testing |
+| `SPEED_MAX` | 55.0 | Maximum speed observed on straights in testing |
