@@ -30,13 +30,11 @@ class GapFinder(Node):
     def __init__(self):
         super().__init__('gap_finder')
 
-        self.scan_sub = self.create_subscription(
-            LaserScan, '/scan', self.scan_callback, 10)
-        self.drive_pub = self.create_publisher(
-            AckermannDriveStamped, '/drive', 10)
+        self.scan_sub = self.create_subscription(LaserScan, '/scan', self.scan_callback, 10)
+        self.drive_pub = self.create_publisher(AckermannDriveStamped, '/drive', 10)
 
         self._prev_steer = 0.0
-        self.get_logger().info('GapFinder (race) node started.')
+        self.get_logger().info('Gap Finder Algo node started.')
 
     def preprocess(self, ranges: np.ndarray) -> np.ndarray:
         proc = np.array(ranges, dtype=np.float32)
@@ -44,8 +42,7 @@ class GapFinder(Node):
         np.clip(proc, 0.0, MAX_RANGE, out=proc)
         return proc
 
-    def trim_fov(self, ranges: np.ndarray, angle_min: float,
-                  angle_inc: float) -> np.ndarray:
+    def trim_fov(self, ranges: np.ndarray, angle_min: float, angle_inc: float) -> np.ndarray:
         n = len(ranges)
         fov_rad = np.deg2rad(FOV_TRIM_DEG)
         centre = int(round(-angle_min / angle_inc))
@@ -71,8 +68,7 @@ class GapFinder(Node):
             masked[lo: hi + 1] = 0.0
         return masked
 
-    def find_best_gap(self, ranges: np.ndarray, angle_min: float,
-                       angle_inc: float, prev_steer: float):
+    def find_best_gap(self, ranges: np.ndarray, angle_min: float, angle_inc: float, prev_steer: float):
         """
         Score = max_depth x width x persist_weight
           persist_weight = exp(+TURN_PERSIST x sign(prev_steer) x gap_centre_angle)
@@ -124,8 +120,7 @@ class GapFinder(Node):
 
         return best_gap
 
-    def best_heading(self, ranges: np.ndarray, start: int, end: int,
-                      angle_min: float, angle_inc: float) -> float:
+    def best_heading(self, ranges: np.ndarray, start: int, end: int, angle_min: float, angle_inc: float) -> float:
         """
         find the best heading in the gap as the range-weighted mean angle of the beams in the gap
         """
@@ -139,8 +134,7 @@ class GapFinder(Node):
             idx = float(np.dot(weights, indices) / total_w)
         return angle_min + idx * angle_inc
 
-    def side_clearance(self, ranges: np.ndarray, angle_min: float,
-                        angle_inc: float) -> float:
+    def side_clearance(self, ranges: np.ndarray, angle_min: float, angle_inc: float) -> float:
         """
         measure the closest obstacle in the side sectors (excluding the forward cone)
         """
@@ -157,8 +151,7 @@ class GapFinder(Node):
         valid = side[(side > 0)]
         return float(valid.min()) if valid.size > 0 else MAX_RANGE
 
-    def forward_clearance(self, ranges: np.ndarray, angle_min: float,
-                           angle_inc: float) -> float:
+    def forward_clearance(self, ranges: np.ndarray, angle_min: float, angle_inc: float) -> float:
         n = len(ranges)
         fwd_rad = np.deg2rad(FWRD_CLEAR_DEG)
         centre  = int(round(-angle_min / angle_inc))
@@ -190,13 +183,11 @@ class GapFinder(Node):
         gap_start, gap_end = self.find_best_gap(proc, angle_min, angle_inc, self._prev_steer)
 
         # best heading (range-weighted mean angle in gap)
-        target_angle = self.best_heading(
-            proc, gap_start, gap_end, angle_min, angle_inc)
+        target_angle = self.best_heading(proc, gap_start, gap_end, angle_min, angle_inc)
 
         # steering with exponential smoothing
         raw_steer = float(np.clip(target_angle, -MAX_STEER, MAX_STEER))
-        steer = (STEER_SMOOTH * self._prev_steer
-                 + (1.0 - STEER_SMOOTH) * raw_steer)
+        steer = (STEER_SMOOTH * self._prev_steer + (1.0 - STEER_SMOOTH) * raw_steer)
         steer = float(np.clip(steer, -MAX_STEER, MAX_STEER))
         self._prev_steer = steer
 
@@ -206,12 +197,12 @@ class GapFinder(Node):
         speed_clear = SPEED_MIN + (SPEED_MAX - SPEED_MIN) * clear_ratio
 
         # steer-based: full speed when straight, sharp cosine taper only in corners
-        # steer below STRAIGHT_THRESH → treat as straight 
+        # steer below STRAIGHT_THRESH then treat as straight 
         abs_steer = abs(steer)
         if abs_steer < STRAIGHT_THRESH:
             speed_steer = SPEED_MAX
         else:
-            # remap steer from [STRAIGHT_THRESH, MAX_STEER] → [0, 1]
+            # remap steer from [STRAIGHT_THRESH, MAX_STEER] → [0, 1] (0.1 stop the car from gg max speed)
             corner_ratio = min((abs_steer - STRAIGHT_THRESH) / (MAX_STEER - STRAIGHT_THRESH), 1.0)
             speed_steer = SPEED_MIN + (SPEED_MAX - SPEED_MIN) * (np.cos(corner_ratio * np.pi / 2) ** CORNER_EXP)
 
@@ -228,7 +219,6 @@ class GapFinder(Node):
         drive_msg.drive.speed = speed
         self.drive_pub.publish(drive_msg)
 
-
 def main(args=None):
     rclpy.init(args=args)
     node = GapFinder()
@@ -239,7 +229,6 @@ def main(args=None):
     finally:
         node.destroy_node()
         rclpy.shutdown()
-
 
 if __name__ == '__main__':
     main()

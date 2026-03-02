@@ -1,10 +1,10 @@
 <?xml version="1.0"?>
 <?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
 <package format="3">
-  <name>f1tenth_gym_ros</name>
+  <name>F1Tenth_Algo</name>
   <version>0.0.0</version>
-  <description>Bridge for using f1tenth_gym in ROS2</description>
-  <maintainer email="billyzheng.bz@gmail.com">Billy Zheng</maintainer>
+  <description>Team Effin algorithm</description>
+  <maintainer email="">Team Effin</maintainer>
   <license>MIT</license>
 
   <exec_depend>geometry_msgs</exec_depend>
