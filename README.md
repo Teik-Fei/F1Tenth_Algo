@@ -2,7 +2,7 @@
 Team member:       
 Wei Xuan    
 Kai Wen    
-Joisah   
+Josiah   
 Teik Fei
 
 ## Setup
@@ -159,3 +159,4 @@ $$\psi_t = \alpha \cdot \psi_{t-1} + (1 - \alpha) \cdot \psi_{raw}$$
 | `SIDE_BRAKE_DIST` | 0.8m | Tuned to catch wall proximity before it becomes a crash |
 | `STEER_SMOOTH` | 0.25 | Balances noise rejection vs. steering responsiveness |
 | `SPEED_MAX` | 55.0 | Maximum speed observed on straights in testing |
+
